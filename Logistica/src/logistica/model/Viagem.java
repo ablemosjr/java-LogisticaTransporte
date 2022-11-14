@@ -52,15 +52,17 @@ public class Viagem implements Comparable<Viagem> {
 
     public double custo(double custoCombustivel) {
         /*
-        método custo() engloba o 
+        este método engloba o 
         consumo de combustível e as diárias do condutor. 
         Considere que um condutor pode dirigir no máximo 700 quilômetros por dia.
         */
+        
+        int distanciaLimite = 700;
         double combustivel = this.veiculo.gastoCombustivel(this.distancia, custoCombustivel);
         
-        if(this.distancia > 700) {
+        if(this.distancia > distanciaLimite) {
             
-            int diasViagem = (int) this.distancia / 700;
+            int diasViagem = (int) this.distancia / distanciaLimite;
             double custoDiarias = diasViagem * this.diariasCondutor;         
             return this.custos = custoDiarias + combustivel;
             
@@ -69,16 +71,20 @@ public class Viagem implements Comparable<Viagem> {
             return this.custos = this.diariasCondutor + combustivel;
         }
     }
+    
+    private static String format(double valor) {
+        return String.format("%.2f", valor);
+    }
 
     @Override
     public String toString() {
             return "\n\nVIAGEM " + condutor + 
                 "\n Veículo = " + veiculo + 
-                "\n Diárias do Condutor = R$ " + diariasCondutor + 
+                "\n Diárias do Condutor = R$ " + format(diariasCondutor) + 
                 "\n Cidade Origem = " + cidadeOrigem + 
                 "\n Cidade Destino = " + cidadeDestino + 
                 "\n Distância = " + distancia + " km" + 
-                "\n Custos totais da viagem = R$ " + custos + "\n";
+                "\n Custos totais da viagem = R$ " + format(custos) + "\n";
     }
 
     @Override

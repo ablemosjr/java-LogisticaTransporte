@@ -33,12 +33,16 @@ public class Condutor implements Comparable<Condutor> {
         return salario;
     }
 
+    private static String format(double valor) {
+        return String.format("%.2f", valor);
+    }
+    
     @Override
-    public String toString() {
+    public String toString() {    
         return "\n Condutor = \n{" + "Nome = " + nome + 
                 "\n CPF = " + cpf + 
                 "\n Data de nascimento = " + dataNascimento + 
-                "\n Salário = R$ " + salario + '}' + "\n";
+                "\n Salário = R$ " + format(salario) + '}' + "\n";
     }
 
     @Override

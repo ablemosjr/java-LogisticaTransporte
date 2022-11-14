@@ -49,6 +49,7 @@ import java.util.List;
 import logistica.model.Caminhao;
 import logistica.model.Carro;
 import logistica.model.Condutor;
+import logistica.model.FolhaDePagamentos;
 import logistica.model.Moto;
 import logistica.model.Relatorio;
 import logistica.model.Veiculo;
@@ -71,20 +72,19 @@ public class Controlador {
             add(new Carro("Chevrolet Onyx", "Carro", "BBB-2222", 45, 9, 2)); // 5
 
 //            String nome, String tipo, String placa, double combustivel, double consumo, double cilindradas
-            add(new Moto("Yamaha R1", "Aviao", "CCC-0000", 17, 10, 998)); // 6
+            add(new Moto("Yamaha R1", "Moto", "CCC-0000", 17, 10, 998)); // 6
             add(new Moto("Honda PCX", "Moto", "CCC-1111", 8, 30, 149.3)); // 7
             add(new Moto("Harley Davidson Fat Bob", "Moto", "CCC-2222", 14, 20, 1868)); // 8
-            add(new Moto("Caloi 10 - Test", "Bicicleta", "0", 0, 0, 0)); // 9
         }};   
         
 //     Cria lista de Condutores        
         List<Condutor> condutor = new ArrayList<>() {{
 //            String nome, String cpf, LocalDate dataNascimento, double salario
-            add(new Condutor("Joao", "10.000.000-01", LocalDate.of(1990, 01, 01), 1200));
-            add(new Condutor("Maria", "80.000.000-02", LocalDate.of(1992, 10, 10), 1700));
-            add(new Condutor("Marcelo", "40.000.000-03", LocalDate.of(1994, 11, 21), 1000));
-            add(new Condutor("Carina", "20.000.000-04", LocalDate.of(1989, 05, 17), 1600));
-            add(new Condutor("Pedro", "12.000.000-05", LocalDate.of(1997, 02, 03), 2000));
+            add(new Condutor("Joao", "10.000.000-01", LocalDate.of(1990, 01, 01), 1200)); // 0 
+            add(new Condutor("Maria", "80.000.000-02", LocalDate.of(1992, 10, 10), 1700)); // 1
+            add(new Condutor("Marcelo", "40.000.000-03", LocalDate.of(1994, 11, 21), 1000)); // 2
+            add(new Condutor("Carina", "20.000.000-04", LocalDate.of(1989, 05, 17), 1600)); // 3
+            add(new Condutor("Pedro", "12.000.000-05", LocalDate.of(1997, 02, 03), 2000)); // 4
         }};
 
 //     Cria lista de Viagens        
@@ -107,19 +107,23 @@ public class Controlador {
 
 //        Impressão das viagens
         System.out.println("\n");
-        //System.out.println(viagem.toString());
+        System.out.println(viagem.toString());
 
 //        Impressão dos condutores ordenados por CPF
         System.out.println("\n\n");
-        //Relatorio.imprimeCondutores(condutor);
+        Relatorio.imprimeCondutores(condutor);
 
 //        Impressão das viagens ordenados por Custos da Viagem
         System.out.println("\n");
-        //Relatorio.imprimeCondutores(viagem);        
+        Relatorio.imprimeViagens(viagem);        
 
 //        Impressão dos veículos ordenados por Tipo
         System.out.println("\n");        
         Relatorio.imprimeVeiculos(veiculo);
+        
+//        Impressão de Folha de Pagamento dos Condutores
+        System.out.println("\n");
+        FolhaDePagamentos.imprimir(condutor, 8, 2018);
+        
     }
-    
 }
